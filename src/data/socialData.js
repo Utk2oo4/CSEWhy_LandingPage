@@ -1,0 +1,38 @@
+export const socialPlatforms = [
+  {
+    id: 'instagram',
+    name: 'Instagram',
+    followers: '78k',
+    label: 'Followers',
+    variant: 'instagram',
+    href: 'https://instagram.com/csewhy',
+    ariaLabel: 'Follow CSEWhy on Instagram',
+  },
+  {
+    id: 'x',
+    name: 'X',
+    followers: '138k',
+    label: 'Followers',
+    variant: 'x',
+    href: 'https://x.com/csewhy',
+    ariaLabel: 'Follow CSEWhy on X',
+  },
+  {
+    id: 'youtube',
+    name: 'Youtube',
+    followers: '10k',
+    label: 'Followers',
+    variant: 'youtube',
+    href: 'https://youtube.com/@csewhy',
+    ariaLabel: 'Follow CSEWhy on YouTube',
+  },
+  {
+    id: 'telegram',
+    name: 'Telegram',
+    followers: '45k',
+    label: 'Followers',
+    variant: 'telegram',
+    href: 'https://t.me/csewhy',
+    ariaLabel: 'Join CSEWhy on Telegram',
+  },
+];
