@@ -1,8 +1,45 @@
 import React, { useState } from 'react';
-import { ChevronDown, Download, Menu, X } from 'lucide-react';
+import {
+  ChevronDown,
+  Download,
+  Menu,
+  X,
+  Landmark,
+  Newspaper,
+  ClipboardList,
+} from 'lucide-react';
+
+const courseDropdownItems = [
+  {
+    title: 'Foundational Courses',
+    desc: 'Build strong conceptual clarity from the basics',
+    icon: Landmark,
+    badgeBg: '#E8F8F0',
+    iconColor: '#059669',
+    href: '#courses',
+  },
+  {
+    title: 'Current Affairs',
+    desc: 'Stay updated with daily news & in-depth analysis',
+    icon: Newspaper,
+    badgeBg: '#EFF6FF',
+    iconColor: '#2563EB',
+    href: '#news',
+  },
+  {
+    title: 'PYQs',
+    desc: 'Topic-wise PYQs for Prelims, Mains & CSAT',
+    icon: ClipboardList,
+    badgeBg: '#F5EEFF',
+    iconColor: '#9333EA',
+    href: '#courses',
+  },
+];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [coursesOpen, setCoursesOpen] = useState(false);
+  const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
 
   return (
     <nav className="navbar" aria-label="Main Navigation">
@@ -20,10 +57,48 @@ export default function Navbar() {
               Home
             </a>
           </li>
-          <li>
-            <a href="#courses" className="nav-link">
-              Courses <ChevronDown size={15} strokeWidth={2.2} />
+          <li
+            className="nav-item-dropdown"
+            onMouseEnter={() => setCoursesOpen(true)}
+            onMouseLeave={() => setCoursesOpen(false)}
+          >
+            <a
+              href="#courses"
+              className={`nav-link ${coursesOpen ? 'open' : ''}`}
+              aria-haspopup="true"
+              aria-expanded={coursesOpen}
+            >
+              Courses <ChevronDown size={15} strokeWidth={2.2} className="dropdown-arrow" />
             </a>
+
+            {/* Desktop Courses Hover Dropdown */}
+            <div className={`courses-dropdown ${coursesOpen ? 'open' : ''}`}>
+              <div className="courses-dropdown-menu">
+                <span className="dropdown-caret" aria-hidden="true" />
+                {courseDropdownItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className="course-dropdown-item"
+                      onClick={() => setCoursesOpen(false)}
+                    >
+                      <div
+                        className="course-dropdown-icon"
+                        style={{ backgroundColor: item.badgeBg, color: item.iconColor }}
+                      >
+                        <Icon size={24} strokeWidth={2.2} />
+                      </div>
+                      <div className="course-dropdown-info">
+                        <span className="course-dropdown-title">{item.title}</span>
+                        <p className="course-dropdown-desc">{item.desc}</p>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </li>
           <li>
             <a href="#blogs" className="nav-link">
@@ -64,7 +139,51 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="mobile-menu-dropdown">
           <a href="#home" className="mobile-menu-link active">Home</a>
-          <a href="#courses" className="mobile-menu-link">Courses</a>
+          {/* Mobile Courses Accordion */}
+          <div className="mobile-courses-accordion">
+            <button
+              type="button"
+              className="mobile-menu-link mobile-courses-toggle"
+              onClick={() => setMobileCoursesOpen(!mobileCoursesOpen)}
+            >
+              <span>Courses</span>
+              <ChevronDown
+                size={16}
+                strokeWidth={2.2}
+                className={`mobile-chevron ${mobileCoursesOpen ? 'open' : ''}`}
+              />
+            </button>
+
+            {mobileCoursesOpen && (
+              <div className="mobile-courses-list">
+                {courseDropdownItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      className="mobile-course-subitem"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        setMobileCoursesOpen(false);
+                      }}
+                    >
+                      <div
+                        className="mobile-course-icon"
+                        style={{ backgroundColor: item.badgeBg, color: item.iconColor }}
+                      >
+                        <Icon size={18} strokeWidth={2.2} />
+                      </div>
+                      <div className="mobile-course-info">
+                        <span className="mobile-course-title">{item.title}</span>
+                        <span className="mobile-course-desc">{item.desc}</span>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+          </div>
           <a href="#blogs" className="mobile-menu-link">Blogs</a>
           <a href="#about" className="mobile-menu-link">About Us</a>
           <hr className="mobile-menu-divider" />

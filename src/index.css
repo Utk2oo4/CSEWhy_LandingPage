@@ -142,6 +142,142 @@ html, body {
   border-radius: 2px;
 }
 
+/* ============================================================
+   COURSES DROPDOWN (DESKTOP)
+   ============================================================ */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.dropdown-arrow {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-item-dropdown:hover .dropdown-arrow,
+.nav-item-dropdown:focus-within .dropdown-arrow,
+.nav-link.open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.courses-dropdown {
+  position: absolute;
+  top: 100%;
+  left: -18px;
+  padding-top: 14px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.22s;
+  pointer-events: none;
+}
+
+.nav-item-dropdown:hover .courses-dropdown,
+.nav-item-dropdown:focus-within .courses-dropdown,
+.courses-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.courses-dropdown-menu {
+  width: 356px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.12),
+              0 4px 14px rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  padding: 6px 0;
+}
+
+/* Caret pointing up at Courses */
+.dropdown-caret {
+  position: absolute;
+  top: -7px;
+  left: 44px;
+  width: 14px;
+  height: 14px;
+  background: #FFFFFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  transform: rotate(45deg);
+  border-top-left-radius: 3px;
+  z-index: 5;
+}
+
+.course-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  text-decoration: none;
+  border-bottom: 1px solid #F1F3F5;
+  transition: background-color 0.18s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.course-dropdown-item:first-of-type {
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+}
+
+.course-dropdown-item:last-of-type {
+  border-bottom: none;
+  border-bottom-left-radius: 19px;
+  border-bottom-right-radius: 19px;
+}
+
+.course-dropdown-item:hover {
+  background-color: #F8FAFC;
+}
+
+.course-dropdown-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-dropdown-item:hover .course-dropdown-icon {
+  transform: scale(1.05);
+}
+
+.course-dropdown-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-dropdown-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+  transition: color 0.18s ease;
+}
+
+.course-dropdown-item:hover .course-dropdown-title {
+  color: var(--brand-orange, #FF5B26);
+}
+
+.course-dropdown-desc {
+  font-size: 13px;
+  font-weight: 400;
+  color: #4B5563;
+  line-height: 1.4;
+  margin: 0;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
@@ -442,7 +578,7 @@ html, body {
 .cards-viewport {
   position: relative;
   width: 100%;
-  height: 470px;
+  height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -451,10 +587,10 @@ html, body {
 /* Single Carousel Card */
 .carousel-card {
   position: absolute;
-  width: 320px;
-  height: 420px;
+  width: 370px;
+  height: 485px;
   background: var(--white);
-  border-radius: 28px;
+  border-radius: 32px;
   border: 1px solid var(--border-card);
   box-shadow: 0 16px 40px rgba(30, 20, 10, 0.06);
   padding: 2.25rem 1.75rem 1.75rem 1.75rem;
@@ -476,7 +612,7 @@ html, body {
 
 /* Left card */
 .carousel-card.prev {
-  transform: translateX(-160px) scale(0.85);
+  transform: translateX(-190px) scale(0.85);
   opacity: 0.65;
   z-index: 5;
   cursor: pointer;
@@ -484,10 +620,535 @@ html, body {
 
 /* Right card */
 .carousel-card.next {
-  transform: translateX(160px) scale(0.85);
+  transform: translateX(190px) scale(0.85);
   opacity: 0.65;
   z-index: 5;
   cursor: pointer;
+}
+
+/* ============================================================
+   MENTOR CAROUSEL CARD (Card 1 - Expert Guidance)
+   ============================================================ */
+.mentor-carousel-card {
+  padding: 0 !important;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-radius: 32px;
+  border: 1px solid #F3D8CC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Upper Visual Area */
+.mentor-visual-stage {
+  position: relative;
+  width: 100%;
+  height: 315px;
+  background: #FFF9F6;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Peach Halo Disc */
+.mentor-peach-disc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
+  width: 255px;
+  height: 255px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FEECE2 0%, #FEE5D8 70%, #FEE5D8 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Teacher Cutout Portrait */
+.mentor-portrait-img {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  height: 295px;
+  max-width: 90%;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 16px rgba(120, 60, 30, 0.08));
+}
+
+/* Floating Badges Common */
+.floating-badge {
+  position: absolute;
+  background: #FFF2EB;
+  border-radius: 16px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  z-index: 4;
+  box-shadow: 0 4px 14px rgba(244, 81, 22, 0.08);
+  border: 1px solid rgba(244, 81, 22, 0.1);
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.mentor-carousel-card.active:hover .floating-badge {
+  transform: translateY(-2px);
+}
+
+.badge-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F45116;
+}
+
+.badge-text-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-text-wrap span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #171717;
+  line-height: 1.25;
+  letter-spacing: -0.2px;
+}
+
+/* Top Right: Smarter Strategies */
+.badge-strategies {
+  top: 24px;
+  right: 22px;
+}
+
+/* Middle Right: Accent Rays */
+.mentor-accent-rays {
+  position: absolute;
+  top: 110px;
+  right: 82px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Bottom Right: Exam-Focused Guidance */
+.badge-guidance {
+  top: 136px;
+  right: 20px;
+}
+
+/* Left: UPSC Mentor Pill Badge */
+.floating-pill-badge.badge-mentor {
+  position: absolute;
+  top: 180px;
+  left: 20px;
+  background: #FFFFFF;
+  border-radius: 999px;
+  padding: 6px 14px 6px 7px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid #F3D8CC;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.pill-user-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #F45116;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pill-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #171717;
+  white-space: nowrap;
+}
+
+/* Lower Information Panel */
+.mentor-info-panel {
+  position: relative;
+  z-index: 4;
+  background: #FFFFFF;
+  padding: 0 24px 26px 24px;
+  border-top: 1px solid rgba(243, 216, 204, 0.5);
+  box-shadow: 0 -8px 24px rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.mentor-book-badge {
+  width: 48px;
+  height: 48px;
+  background: #FFFFFF;
+  border-radius: 14px;
+  border: 1px solid #F8DCD0;
+  box-shadow: 0 4px 14px rgba(244, 81, 22, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -24px;
+  margin-bottom: 12px;
+}
+
+.mentor-panel-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.mentor-panel-desc {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #4B5563;
+  margin: 0;
+}
+
+/* ============================================================
+   APP CAROUSEL CARD (Card 2 - CSEWhy App)
+   ============================================================ */
+.app-carousel-card {
+  padding: 0 !important;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-radius: 32px;
+  border: 1px solid #F3D8CC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Upper Visual Area */
+.app-visual-stage {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  background: #FFF9F6;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Peach Halo Disc */
+.app-peach-disc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FEECE2 0%, #FEE5D8 70%, #FEE5D8 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Three Phone Mockups Image */
+.app-mockup-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 345px;
+  max-width: 105%;
+  object-fit: contain;
+  object-position: bottom center;
+  margin-bottom: -32px;
+  transform: scale(1.15);
+  transform-origin: bottom center;
+  pointer-events: none;
+  filter: drop-shadow(0 14px 28px rgba(120, 60, 30, 0.14));
+  transition: transform 0.4s ease;
+}
+
+.app-carousel-card.active:hover .app-mockup-img {
+  transform: scale(1.17) translateY(-2px);
+}
+
+/* Bottom-Right Accent Rays */
+.app-accent-rays.bottom-right {
+  position: absolute;
+  bottom: 34px;
+  right: 14px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Lower Information Panel */
+.app-info-panel {
+  position: relative;
+  z-index: 4;
+  background: #FFFFFF;
+  padding: 0 24px 26px 24px;
+  border-top: 1px solid rgba(243, 216, 204, 0.5);
+  box-shadow: 0 -8px 24px rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.app-phone-badge {
+  width: 48px;
+  height: 48px;
+  background: #FFF0E9;
+  border-radius: 14px;
+  border: 1px solid #F8DCD0;
+  box-shadow: 0 4px 14px rgba(244, 81, 22, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -24px;
+  margin-bottom: 12px;
+}
+
+.app-panel-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.app-panel-desc {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #4B5563;
+  margin: 0;
+}
+
+/* ============================================================
+   COMMUNITY CAROUSEL CARD (Card 3 - A Big Community)
+   ============================================================ */
+.community-carousel-card {
+  padding: 0 !important;
+  overflow: hidden;
+  background: #FFFFFF;
+  border-radius: 32px;
+  border: 1px solid #F3D8CC;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Upper Visual Area */
+.community-visual-stage {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  background: #FFF9F6;
+  overflow: hidden;
+}
+
+/* Group Photograph */
+.community-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+.community-carousel-card.active:hover .community-photo-img {
+  transform: scale(1.03);
+}
+
+/* Connecting Orange Arch Curve */
+.social-arch-curve {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Social Platform Badges */
+.social-badge {
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 7px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(244, 81, 22, 0.12);
+  z-index: 4;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.community-carousel-card.active:hover .social-badge {
+  transform: translateY(-2px);
+}
+
+.social-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.social-badge-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.social-count {
+  font-size: 14px;
+  font-weight: 800;
+  color: #F45116;
+  line-height: 1.15;
+  letter-spacing: -0.2px;
+}
+
+.social-label {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #64748B;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+/* Badge Layout on the Arch */
+.badge-ig {
+  top: 48px;
+  left: 10px;
+  transform: rotate(-2deg);
+}
+
+.badge-yt {
+  top: 10px;
+  left: 84px;
+}
+
+.badge-x {
+  top: 10px;
+  right: 84px;
+}
+
+.badge-tg {
+  top: 48px;
+  right: 10px;
+  transform: rotate(2deg);
+}
+
+/* Accent Rays */
+.community-accent-rays {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.community-accent-rays.top-left {
+  top: 10px;
+  left: 48px;
+}
+
+.community-accent-rays.top-right {
+  top: 10px;
+  right: 48px;
+}
+
+.community-accent-rays.mid-left {
+  top: 106px;
+  left: 12px;
+}
+
+.community-accent-rays.mid-right {
+  top: 106px;
+  right: 12px;
+}
+
+/* Floating Pill: India's biggest creator led UPSC community */
+.floating-community-pill {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFDFB;
+  border-radius: 999px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid #F3D8CC;
+  z-index: 5;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.floating-community-pill span {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.2px;
+}
+
+/* Lower Information Panel */
+.community-info-panel {
+  position: relative;
+  z-index: 4;
+  background: #FFFFFF;
+  padding: 0 24px 26px 24px;
+  border-top: 1px solid rgba(243, 216, 204, 0.5);
+  box-shadow: 0 -8px 24px rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.community-icon-badge {
+  width: 48px;
+  height: 48px;
+  background: #FFF0E9;
+  border-radius: 14px;
+  border: 1px solid #F8DCD0;
+  box-shadow: 0 4px 14px rgba(244, 81, 22, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -24px;
+  margin-bottom: 12px;
+}
+
+.community-panel-title {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.community-panel-desc {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #4B5563;
+  margin: 0;
 }
 
 .carousel-card-icon-box {
@@ -2027,6 +2688,89 @@ html, body {
 .mobile-menu-link.active {
   font-weight: 600;
   color: var(--brand-orange);
+}
+
+/* Mobile Courses Accordion */
+.mobile-courses-accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mobile-courses-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.mobile-chevron {
+  transition: transform 0.2s ease;
+  color: var(--text-secondary);
+}
+
+.mobile-chevron.open {
+  transform: rotate(180deg);
+}
+
+.mobile-courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0 8px 6px;
+  border-left: 2px solid #F1F3F5;
+  margin: 4px 0 4px 6px;
+}
+
+.mobile-course-subitem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.mobile-course-subitem:hover {
+  background-color: #F8FAFC;
+}
+
+.mobile-course-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mobile-course-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-course-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.25;
+}
+
+.mobile-course-desc {
+  font-size: 11.5px;
+  color: #6B7280;
+  line-height: 1.3;
 }
 
 .mobile-menu-divider {
