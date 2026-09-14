@@ -107,6 +107,7 @@ html, body {
   align-items: center;
   gap: 2.25rem;
   list-style: none;
+  transform: translateX(-45px);
 }
 
 .nav-link {

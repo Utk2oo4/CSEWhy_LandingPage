@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   ChevronDown,
-  Download,
   Menu,
   X,
   Landmark,
@@ -114,9 +113,6 @@ export default function Navbar() {
 
         {/* Desktop Actions */}
         <div className="nav-actions">
-          <a href="#download" className="btn-download-app">
-            <Download size={17} strokeWidth={2.2} /> Download App
-          </a>
           <a href="#login" className="btn-login">
             Login
           </a>
@@ -187,9 +183,6 @@ export default function Navbar() {
           <a href="#blogs" className="mobile-menu-link">Blogs</a>
           <a href="#about" className="mobile-menu-link">About Us</a>
           <hr className="mobile-menu-divider" />
-          <a href="#download" className="btn-download-app mobile-menu-cta">
-            <Download size={17} /> Download App
-          </a>
           <a href="#login" className="btn-login mobile-menu-cta">Login</a>
           <a href="#explore" className="btn-explore-nav mobile-menu-cta">Explore Courses</a>
         </div>
