@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Newspaper, ClipboardCheck, GraduationCap, User, Smartphone, Users } from 'lucide-react';
+import { BookOpen, Newspaper, ClipboardCheck, GraduationCap, Smartphone, Users } from 'lucide-react';
 
 export default function HeroCarouselCard({ slide, position, onClick }) {
   // If this is the Expert Guidance Mentor Card (Card 1)

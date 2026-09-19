@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
 import { newsMentions } from '../../data/newsData';
 import dainikLogo from '../../assets/news logo/dainik.png';
 import indianExpressLogo from '../../assets/news logo/indianexpress.avif';

@@ -1,44 +1,57 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ChevronDown,
   Menu,
   X,
-  Landmark,
-  Newspaper,
-  ClipboardList,
+  GraduationCap,
+  Briefcase,
 } from 'lucide-react';
+import { coursesData, upskillingData } from '../../data/coursesData';
 
-const courseDropdownItems = [
+const courseCategories = [
   {
-    title: 'Foundational Courses',
-    desc: 'Build strong conceptual clarity from the basics',
-    icon: Landmark,
-    badgeBg: '#E8F8F0',
-    iconColor: '#059669',
-    href: '#courses',
+    id: 'upsc',
+    heading: 'For UPSC Preparation',
+    icon: GraduationCap,
+    badgeBg: '#FFF0E9',
+    iconColor: '#F45116',
+    courses: coursesData,
   },
   {
-    title: 'Current Affairs',
-    desc: 'Stay updated with daily news & in-depth analysis',
-    icon: Newspaper,
-    badgeBg: '#EFF6FF',
-    iconColor: '#2563EB',
-    href: '#news',
-  },
-  {
-    title: 'PYQs',
-    desc: 'Topic-wise PYQs for Prelims, Mains & CSAT',
-    icon: ClipboardList,
+    id: 'upskilling',
+    heading: 'For Upskilling',
+    icon: Briefcase,
     badgeBg: '#F5EEFF',
-    iconColor: '#9333EA',
-    href: '#courses',
+    iconColor: '#7C3AED',
+    courses: upskillingData,
   },
 ];
 
-export default function Navbar() {
+export default function Navbar({ activeLink = 'home' }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
+
+  const handleCourseItemClick = (e, audienceType, courseId) => {
+    setCoursesOpen(false);
+    setMobileOpen(false);
+    setMobileCoursesOpen(false);
+    window.dispatchEvent(new CustomEvent('change-course-audience', { detail: audienceType }));
+
+    const targetId = courseId || 'courses';
+    const el = document.getElementById(targetId);
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      const coursesSection = document.getElementById('courses');
+      if (coursesSection) {
+        e.preventDefault();
+        coursesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <nav className="navbar" aria-label="Main Navigation">
@@ -52,9 +65,9 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <ul className="nav-links">
           <li>
-            <a href="#home" className="nav-link active">
+            <Link to="/" className={`nav-link ${activeLink === 'home' ? 'active' : ''}`}>
               Home
-            </a>
+            </Link>
           </li>
           <li
             className="nav-item-dropdown"
@@ -72,32 +85,61 @@ export default function Navbar() {
 
             {/* Desktop Courses Hover Dropdown */}
             <div className={`courses-dropdown ${coursesOpen ? 'open' : ''}`}>
-              <div className="courses-dropdown-menu">
+              <div className="courses-dropdown-menu courses-mega-menu">
                 <span className="dropdown-caret" aria-hidden="true" />
-                {courseDropdownItems.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <a
-                      key={item.title}
-                      href={item.href}
-                      className="course-dropdown-item"
-                      onClick={() => setCoursesOpen(false)}
-                    >
-                      <div
-                        className="course-dropdown-icon"
-                        style={{ backgroundColor: item.badgeBg, color: item.iconColor }}
-                      >
-                        <Icon size={24} strokeWidth={2.2} />
+                <div className="courses-dropdown-columns">
+                  {courseCategories.map((category) => {
+                    const Icon = category.icon;
+                    return (
+                      <div key={category.id} className="courses-dropdown-col">
+                        {/* Category Heading */}
+                        <a
+                          href="#courses"
+                          className="course-col-header"
+                          onClick={(e) => handleCourseItemClick(e, category.id)}
+                        >
+                          <div
+                            className="course-col-icon"
+                            style={{ backgroundColor: category.badgeBg, color: category.iconColor }}
+                          >
+                            <Icon size={18} strokeWidth={2.2} />
+                          </div>
+                          <div className="course-col-header-text">
+                            <span className="course-col-title">{category.heading}</span>
+                          </div>
+                        </a>
+
+                        {/* List of courses under heading */}
+                        <div className="course-col-list">
+                          {category.courses.map((course) => (
+                            <a
+                              key={course.id}
+                              href={`#${course.id}`}
+                              className="course-col-item"
+                              onClick={(e) => handleCourseItemClick(e, category.id, course.id)}
+                            >
+                              <span
+                                className="course-col-item-bullet"
+                                style={{ '--bullet-color': category.iconColor }}
+                              />
+                              <span className="course-col-item-title">{course.title}</span>
+                            </a>
+                          ))}
+                        </div>
                       </div>
-                      <div className="course-dropdown-info">
-                        <span className="course-dropdown-title">{item.title}</span>
-                        <p className="course-dropdown-desc">{item.desc}</p>
-                      </div>
-                    </a>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
+          </li>
+          <li>
+            <Link
+              to="/testimonials"
+              className={`nav-link ${activeLink === 'testimonials' ? 'active' : ''}`}
+            >
+              Testimonials
+            </Link>
           </li>
           <li>
             <a href="#blogs" className="nav-link">
@@ -105,9 +147,12 @@ export default function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#about" className="nav-link">
-              About Us <ChevronDown size={15} strokeWidth={2.2} />
-            </a>
+            <Link
+              to="/about"
+              className={`nav-link ${activeLink === 'about' ? 'active' : ''}`}
+            >
+              About Us
+            </Link>
           </li>
         </ul>
 
@@ -134,7 +179,8 @@ export default function Navbar() {
       {/* Mobile Menu Dropdown */}
       {mobileOpen && (
         <div className="mobile-menu-dropdown">
-          <a href="#home" className="mobile-menu-link active">Home</a>
+          <Link to="/" className={`mobile-menu-link ${activeLink === 'home' ? 'active' : ''}`} onClick={() => setMobileOpen(false)}>Home</Link>
+          <Link to="/testimonials" className={`mobile-menu-link ${activeLink === 'testimonials' ? 'active' : ''}`} onClick={() => setMobileOpen(false)}>Testimonials</Link>
           {/* Mobile Courses Accordion */}
           <div className="mobile-courses-accordion">
             <button
@@ -152,36 +198,48 @@ export default function Navbar() {
 
             {mobileCoursesOpen && (
               <div className="mobile-courses-list">
-                {courseDropdownItems.map((item) => {
-                  const Icon = item.icon;
+                {courseCategories.map((category) => {
+                  const Icon = category.icon;
                   return (
-                    <a
-                      key={item.title}
-                      href={item.href}
-                      className="mobile-course-subitem"
-                      onClick={() => {
-                        setMobileOpen(false);
-                        setMobileCoursesOpen(false);
-                      }}
-                    >
+                    <div key={category.id} className="mobile-course-group">
                       <div
-                        className="mobile-course-icon"
-                        style={{ backgroundColor: item.badgeBg, color: item.iconColor }}
+                        className="mobile-course-group-heading"
+                        onClick={(e) => handleCourseItemClick(e, category.id)}
                       >
-                        <Icon size={18} strokeWidth={2.2} />
+                        <span
+                          className="mobile-group-icon"
+                          style={{ backgroundColor: category.badgeBg, color: category.iconColor }}
+                        >
+                          <Icon size={14} strokeWidth={2.2} />
+                        </span>
+                        <span>{category.heading}</span>
                       </div>
-                      <div className="mobile-course-info">
-                        <span className="mobile-course-title">{item.title}</span>
-                        <span className="mobile-course-desc">{item.desc}</span>
+                      <div className="mobile-group-links">
+                        {category.courses.map((course) => (
+                          <a
+                            key={course.id}
+                            href={`#${course.id}`}
+                            className="mobile-course-link-item"
+                            onClick={(e) => handleCourseItemClick(e, category.id, course.id)}
+                          >
+                            {course.title}
+                          </a>
+                        ))}
                       </div>
-                    </a>
+                    </div>
                   );
                 })}
               </div>
             )}
           </div>
           <a href="#blogs" className="mobile-menu-link">Blogs</a>
-          <a href="#about" className="mobile-menu-link">About Us</a>
+          <Link
+            to="/about"
+            className={`mobile-menu-link ${activeLink === 'about' ? 'active' : ''}`}
+            onClick={() => setMobileOpen(false)}
+          >
+            About Us
+          </Link>
           <hr className="mobile-menu-divider" />
           <a href="#login" className="btn-login mobile-menu-cta">Login</a>
           <a href="#explore" className="btn-explore-nav mobile-menu-cta">Explore Courses</a>

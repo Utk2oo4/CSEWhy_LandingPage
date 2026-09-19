@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Download, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -34,10 +35,10 @@ export default function Footer() {
           <div className="footer-link-col">
             <h4 className="footer-col-title">Quick Links</h4>
             <ul className="footer-links">
-              <li><a href="#home">Home</a></li>
+              <li><Link to="/">Home</Link></li>
               <li><a href="#courses">Courses</a></li>
               <li><a href="#blogs">Blogs</a></li>
-              <li><a href="#about">About Us</a></li>
+              <li><Link to="/about">About Us</Link></li>
               <li><a href="#download">Download App</a></li>
             </ul>
           </div>

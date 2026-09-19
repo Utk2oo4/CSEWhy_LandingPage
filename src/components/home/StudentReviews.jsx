@@ -24,13 +24,22 @@ function StarRating({ count = 5 }) {
 }
 
 function ReviewCard({ review }) {
-  const { name, location, initials, rating, text, product, accent } = review;
+  const { name, location, initials, rating, text, product, accent, avatar } = review;
 
   return (
     <article className="review-card">
       <div className="review-card-header">
         <div className={`review-avatar review-avatar-${accent}`} aria-hidden="true">
-          <span>{initials}</span>
+          {avatar ? (
+            <img
+              src={avatar}
+              alt={name}
+              className="review-avatar-img"
+              loading="lazy"
+            />
+          ) : (
+            <span>{initials}</span>
+          )}
         </div>
         <div className="review-author-meta">
           <h3 className="review-author-name">{name}</h3>
