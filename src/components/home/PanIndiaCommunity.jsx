@@ -59,46 +59,48 @@ export default function PanIndiaCommunity() {
           {/* Right Column Map & Clean Visuals */}
           <div className="pan-india-right">
             <div className="map-visual-wrapper">
-              {/* Map SVG */}
-              <img
-                src={indiaMapSvg}
-                alt="Map of India showing CSEWhy nationwide community"
-                className="india-map-image"
-                loading="lazy"
-              />
+              <div className="map-inner-container">
+                {/* Map SVG */}
+                <img
+                  src={indiaMapSvg}
+                  alt="Map of India showing CSEWhy nationwide community"
+                  className="india-map-image"
+                  loading="lazy"
+                />
 
-              {/* Location Pins & Avatars */}
-              {communityLocations.map((loc) => {
-                const isActive = activeCity === loc.id;
-                return (
-                  <React.Fragment key={loc.id}>
-                    {/* Location Pin on Map */}
-                    <div
-                      className={`map-pin-marker ${isActive ? 'active' : ''}`}
-                      style={{ left: loc.pinPos.left, top: loc.pinPos.top }}
-                      onMouseEnter={() => setActiveCity(loc.id)}
-                      onMouseLeave={() => setActiveCity(null)}
-                    >
-                      <span className="pin-dot" />
-                      <span className="pin-pulse" />
-                    </div>
+                {/* Location Pins & Avatars */}
+                {communityLocations.map((loc) => {
+                  const isActive = activeCity === loc.id;
+                  return (
+                    <React.Fragment key={loc.id}>
+                      {/* Location Pin on Map */}
+                      <div
+                        className={`map-pin-marker ${isActive ? 'active' : ''}`}
+                        style={{ left: loc.pinPos.left, top: loc.pinPos.top }}
+                        onMouseEnter={() => setActiveCity(loc.id)}
+                        onMouseLeave={() => setActiveCity(null)}
+                      >
+                        <span className="pin-dot" />
+                        <span className="pin-pulse" />
+                      </div>
 
-                    {/* Student Avatar with City Label */}
-                    <div
-                      className={`map-student-avatar ${isActive ? 'active' : ''}`}
-                      style={{
-                        left: loc.avatarPos.left,
-                        top: loc.avatarPos.top
-                      }}
-                      onMouseEnter={() => setActiveCity(loc.id)}
-                      onMouseLeave={() => setActiveCity(null)}
-                    >
-                      <img src={loc.avatar} alt={`Student from ${loc.city}`} />
-                      <span className="avatar-city-tag">{loc.city}</span>
-                    </div>
-                  </React.Fragment>
-                );
-              })}
+                      {/* Student Avatar with City Label */}
+                      <div
+                        className={`map-student-avatar ${isActive ? 'active' : ''}`}
+                        style={{
+                          left: loc.avatarPos.left,
+                          top: loc.avatarPos.top
+                        }}
+                        onMouseEnter={() => setActiveCity(loc.id)}
+                        onMouseLeave={() => setActiveCity(null)}
+                      >
+                        <img src={loc.avatar} alt={`Student from ${loc.city}`} />
+                        <span className="avatar-city-tag">{loc.city}</span>
+                      </div>
+                    </React.Fragment>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

@@ -12,8 +12,8 @@ export const communityLocations = [
     id: "delhi",
     city: "Delhi",
     message: "Same Aspirations Bigger Together.",
-    pinPos: { left: "37%", top: "27%" },
-    avatarPos: { left: "37%", top: "16%" },
+    pinPos: { left: "31%", top: "30%" },
+    avatarPos: { left: "31%", top: "20%" },
     calloutPos: { left: "54%", top: "16%" },
     avatar: avatar1
   },
@@ -21,8 +21,8 @@ export const communityLocations = [
     id: "jaipur",
     city: "Jaipur",
     message: "Learning Never Stops.",
-    pinPos: { left: "27%", top: "36%" },
-    avatarPos: { left: "18%", top: "33%" },
+    pinPos: { left: "26%", top: "36%" },
+    avatarPos: { left: "16%", top: "33%" },
     calloutPos: { left: "12%", top: "23%" },
     avatar: avatar2
   },
@@ -30,8 +30,8 @@ export const communityLocations = [
     id: "mumbai",
     city: "Mumbai",
     message: "Ideas Today A Better India Tomorrow.",
-    pinPos: { left: "21%", top: "54%" },
-    avatarPos: { left: "12%", top: "51%" },
+    pinPos: { left: "17%", top: "62%" },
+    avatarPos: { left: "9%", top: "59%" },
     calloutPos: { left: "22%", top: "62%" },
     avatar: avatar3
   },
@@ -39,8 +39,8 @@ export const communityLocations = [
     id: "bengaluru",
     city: "Bengaluru",
     message: "Learn Discuss Grow",
-    pinPos: { left: "33%", top: "78%" },
-    avatarPos: { left: "24%", top: "75%" },
+    pinPos: { left: "32%", top: "82%" },
+    avatarPos: { left: "22%", top: "84%" },
     calloutPos: { left: "16%", top: "86%" },
     avatar: avatar4
   },
@@ -48,8 +48,8 @@ export const communityLocations = [
     id: "chennai",
     city: "Chennai",
     message: "Discipline Today Change Tomorrow.",
-    pinPos: { left: "44%", top: "84%" },
-    avatarPos: { left: "53%", top: "82%" },
+    pinPos: { left: "40%", top: "85%" },
+    avatarPos: { left: "50%", top: "86%" },
     calloutPos: { left: "44%", top: "92%" },
     avatar: avatar5
   },
@@ -57,8 +57,8 @@ export const communityLocations = [
     id: "hyderabad",
     city: "Hyderabad",
     message: "More Learners A Brighter India.",
-    pinPos: { left: "45%", top: "63%" },
-    avatarPos: { left: "54%", top: "60%" },
+    pinPos: { left: "40%", top: "66%" },
+    avatarPos: { left: "50%", top: "61%" },
     calloutPos: { left: "68%", top: "65%" },
     avatar: avatar6
   },
@@ -66,8 +66,8 @@ export const communityLocations = [
     id: "kolkata",
     city: "Kolkata",
     message: "Different Paths Same Purpose.",
-    pinPos: { left: "65%", top: "48%" },
-    avatarPos: { left: "74%", top: "44%" },
+    pinPos: { left: "69%", top: "50%" },
+    avatarPos: { left: "79%", top: "49%" },
     calloutPos: { left: "84%", top: "52%" },
     avatar: avatar7
   },
@@ -75,8 +75,8 @@ export const communityLocations = [
     id: "guwahati",
     city: "Guwahati",
     message: "Small City Big Dreams.",
-    pinPos: { left: "80%", top: "34%" },
-    avatarPos: { left: "88%", top: "29%" },
+    pinPos: { left: "81%", top: "38%" },
+    avatarPos: { left: "90%", top: "34%" },
     calloutPos: { left: "82%", top: "41%" },
     avatar: avatar8
   }

@@ -1923,7 +1923,16 @@ html, body {
 .map-visual-wrapper {
   position: relative;
   width: 100%;
-  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-inner-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 611.86 / 695.70;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1931,11 +1940,11 @@ html, body {
 
 .india-map-image {
   width: 100%;
-  max-width: 500px;
-  height: auto;
-  opacity: 0.85;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  opacity: 0.88;
   filter: none;
-  transform: scale(1.05);
 }
 
 .map-center-text {
