@@ -9,6 +9,25 @@ import { COURSES_V2, getTestimonialsForCourse } from '../../data/testimonialsDat
 const DIRECTIONS = ['left', 'right'];
 
 
+function CourseSectionHeading({ course }) {
+  const { label, highlight } = course;
+  if (!highlight) return <>{label}</>;
+
+  const idx = label.indexOf(highlight);
+  if (idx === -1) return <>{label}</>;
+
+  const before = label.slice(0, idx);
+  const after = label.slice(idx + highlight.length);
+
+  return (
+    <>
+      {before}
+      <span className="tv2-title-highlight">{highlight}</span>
+      {after}
+    </>
+  );
+}
+
 export default function TestimonialsPageV2() {
   const [lightboxItem, setLightboxItem]         = useState(null);
   const [lightboxItems, setLightboxItems]       = useState([]);
@@ -45,7 +64,7 @@ export default function TestimonialsPageV2() {
             <div className="container tv2-course-header">
               <div className="tv2-course-header-left">
                 <h2 id={`course-heading-${course.id}`} className="tv2-course-title">
-                  {course.label}
+                  <CourseSectionHeading course={course} />
                 </h2>
                 <p className="tv2-course-subtitle">{course.subtitle}</p>
               </div>

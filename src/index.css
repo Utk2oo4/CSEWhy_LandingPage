@@ -5922,6 +5922,10 @@ html, body {
   line-height: 1.1;
 }
 
+.tv2-title-highlight {
+  color: var(--brand-orange);
+}
+
 .tv2-course-subtitle {
   font-size: 1rem;
   color: var(--brand-orange);
