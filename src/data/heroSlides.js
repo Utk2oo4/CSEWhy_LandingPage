@@ -45,6 +45,8 @@ export const statsData = [
   {
     id: "community",
     number: "500K+",
+    target: 500,
+    suffix: "K+",
     label: "Strong Community",
     icon: "users",
     color: "#F45116",
@@ -53,6 +55,8 @@ export const statsData = [
   {
     id: "prelims",
     number: "1000+",
+    target: 1000,
+    suffix: "+",
     label: "Prelims Cleared",
     icon: "award",
     color: "#10B981",
@@ -61,6 +65,8 @@ export const statsData = [
   {
     id: "resources",
     number: "50K+",
+    target: 50,
+    suffix: "K+",
     label: "Resources & Notes",
     icon: "book-open",
     color: "#3B82F6",
@@ -69,6 +75,8 @@ export const statsData = [
   {
     id: "downloads",
     number: "50K+",
+    target: 50,
+    suffix: "K+",
     label: "App Downloads",
     icon: "download",
     color: "#8B5CF6",

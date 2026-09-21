@@ -1,7 +1,6 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import HeroActions from './HeroActions';
-import AppDownloadRow from './AppDownloadRow';
 import HeroCarousel from './HeroCarousel';
 import StatsBar from './StatsBar';
 import { heroSlides } from '../../data/heroSlides';
@@ -33,7 +32,6 @@ export default function HeroSection() {
             </p>
 
             <HeroActions />
-            <AppDownloadRow />
           </div>
 
           {/* Right Column Interactive Promotional Carousel */}

@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Download, Mail, MapPin } from 'lucide-react';
+import landmarkSkylineSvg from '../assets/design.svg';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="site-footer">
-      <div className="container">
+      {/* Background Landmark Skyline Overlay */}
+      <div className="footer-skyline-bg" aria-hidden="true">
+        <img src={landmarkSkylineSvg} alt="" className="footer-skyline-bg-img" loading="lazy" />
+      </div>
+
+      <div className="container footer-content-container">
         {/* Main Footer Grid */}
         <div className="footer-grid">
           {/* Brand Column */}

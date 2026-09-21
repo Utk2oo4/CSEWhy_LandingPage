@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Users, MapPin, Target } from 'lucide-react';
 import indiaMapSvg from '../../assets/india.svg';
-import landmarkSkylineSvg from '../../assets/design.svg';
 import { communityLocations, communityStats } from '../../data/communityLocations';
 
 export default function PanIndiaCommunity() {
@@ -104,11 +103,6 @@ export default function PanIndiaCommunity() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom Indian Landmark Skyline Vector */}
-      <div className="landmark-skyline-wrapper" aria-hidden="true">
-        <img src={landmarkSkylineSvg} alt="" className="landmark-skyline-img" loading="lazy" />
       </div>
     </section>
   );

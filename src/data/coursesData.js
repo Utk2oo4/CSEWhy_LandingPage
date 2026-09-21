@@ -32,22 +32,7 @@ export const coursesData = [
       { text: "Infographics and ready-to-revise content", icon: "image" },
     ],
   },
-  {
-    id: "csat-power-pack-2027",
-    title: "CSAT Power Pack 2027",
-    intro: "Your complete one-stop solution for UPSC CSAT.",
-    accentColor: "#10B981",
-    accentBg: "#ECFDF5",
-    iconBg: "#D1FAE5",
-    illustration: "books",
-    originalPrice: "₹1,200",
-    discountedPrice: "₹750",
-    points: [
-      { text: "Maths & Quant, Reasoning and Reading Comprehension", icon: "layers" },
-      { text: "Concepts to PYQs — identify UPSC traps", icon: "target" },
-      { text: "Single resource — no need for multiple sources", icon: "book-open" },
-    ],
-  },
+  
   {
     id: "master-ai-for-upsc",
     title: "Master AI for UPSC",
@@ -64,23 +49,7 @@ export const coursesData = [
       { text: "Stay rooted in authentic sources & independent thinking", icon: "map" },
     ],
   },
-  {
-    id: "ai-masterclass-upsc",
-    title: "AI Masterclass for UPSC",
-    intro: "Ace your UPSC preparation with AI — 100-minute live masterclass.",
-    accentColor: "#E11D48",
-    accentBg: "#FFF1F2",
-    iconBg: "#FFE4E6",
-    illustration: "creator",
-    originalPrice: "₹500",
-    discountedPrice: "₹199",
-    badge: "Live • 3 Oct 2026 • 5 PM",
-    points: [
-      { text: "UPSC AI Prompt Library — Prelims + Mains + CSAT", icon: "star" },
-      { text: "Practical AI for UPSC E-Book & Revision Toolkit", icon: "file-text" },
-      { text: "Prepare faster, revise smarter, write better answers", icon: "bar-chart" },
-    ],
-  },
+  
   {
     id: "upsc-foundation-package",
     title: "UPSC Foundation Package",
@@ -173,14 +142,10 @@ export const COURSE_VIEW_CONFIG = {
   upsc: {
     heading: "Courses Designed for a Smarter UPSC Preparation",
     highlightPhrase: "UPSC Preparation",
-    description:
-      "Learn from expert mentors with curated content, practical tools and real exam insights. Choose the course that fits your goals and move closer to your dream.",
   },
   upskilling: {
     heading: "Skills That Help You Move Forward",
     highlightPhrase: "Move Forward",
-    description:
-      "Build practical skills, learn from industry professionals and create opportunities beyond your preparation journey.",
   },
 };
 

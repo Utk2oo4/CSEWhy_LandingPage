@@ -213,7 +213,7 @@ function CourseCard({ course, index }) {
         style={{ '--cta-color': course.accentColor }}
         aria-label={`Learn more about ${course.title}`}
       >
-        <span>Learn More</span>
+        <span>See Details</span>
         <ArrowRight size={16} strokeWidth={2.2} className="course-cta-arrow" />
       </a>
     </div>
@@ -277,7 +277,7 @@ function AudienceToggle({ audience, onChange }) {
         onKeyDown={(e) => handleKey(e, 'upsc')}
         tabIndex={audience === 'upsc' ? 0 : -1}
       >
-        <GraduationCap size={17} strokeWidth={2.2} />
+        <GraduationCap size={15} strokeWidth={2.2} />
         <span>For UPSC Aspirants</span>
       </button>
 
@@ -291,7 +291,7 @@ function AudienceToggle({ audience, onChange }) {
         onKeyDown={(e) => handleKey(e, 'upskilling')}
         tabIndex={audience === 'upskilling' ? 0 : -1}
       >
-        <Briefcase size={17} strokeWidth={2.2} />
+        <Briefcase size={15} strokeWidth={2.2} />
         <span>For Upskilling</span>
       </button>
     </div>
@@ -368,27 +368,24 @@ export default function CourseDiscovery() {
           </div>
         </div>
 
-        {/* Audience Toggle */}
+        {/* Section Header */}
+        <div className={`course-header-wrapper ${animating ? 'course-header--exit' : 'course-header--enter'}`}>
+          <CourseHeading config={config} />
+        </div>
+
+        {/* Audience Toggle (Right-aligned just above course cards) */}
         <div className="course-toggle-row">
           <AudienceToggle audience={audience} onChange={handleAudienceChange} />
         </div>
 
-        {/* Section Header + Cards panel */}
+        {/* Course Cards Grid */}
         <div
           id="course-panel"
           role="tabpanel"
           aria-labelledby={`tab-${audience}`}
           className={`course-content-panel ${animating ? 'course-content-panel--exit' : 'course-content-panel--enter'}`}
         >
-          {/* Section Header */}
-          <div className="course-header-wrapper">
-            <CourseHeading config={config} />
-
-            <p className="course-desc">{config.description}</p>
-          </div>
-
-          {/* Course Cards Grid */}
-          <div className={`course-grid ${audience === 'upskilling' ? 'course-grid--upskilling' : ''}`}>
+          <div className="course-grid">
             {courses.map((course, index) => (
               <CourseCard key={course.id} course={course} index={index} />
             ))}
@@ -402,9 +399,6 @@ export default function CourseDiscovery() {
             <ArrowRight size={18} strokeWidth={2.2} className="course-cta-arrow" />
           </a>
         </div>
-
-        {/* Bottom microcopy */}
-        <p className="course-microcopy" aria-hidden="true">LEARN • PRACTICE • GROW • BELONG</p>
       </div>
 
       {/* Decorative architectural skyline */}
