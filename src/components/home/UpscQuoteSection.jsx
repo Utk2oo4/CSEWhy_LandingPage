@@ -18,38 +18,29 @@ export default function UpscQuoteSection({
   const allWords = [highlight, ...quoteWords]; // total tokens
   const totalWords = allWords.length;
 
-  // Entrance fade-in
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  // Scroll-driven word highlight
+  // Scroll-driven word highlight (throttled with rAF + state deduping)
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
+    let ticking = false;
     const onScroll = () => {
-      const { top, height } = section.getBoundingClientRect();
-      const windowH = window.innerHeight;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!section) return;
+          const { top, height } = section.getBoundingClientRect();
+          const windowH = window.innerHeight;
 
-      // Completes when section top reaches 60% down the viewport (section is "arrived")
-      const triggerRange = windowH * 0.6 + height * 0.3;
-      const progress = Math.min(Math.max((windowH - top) / triggerRange, 0), 1);
+          // Completes when section top reaches 60% down the viewport (section is "arrived")
+          const triggerRange = windowH * 0.6 + height * 0.3;
+          const progress = Math.min(Math.max((windowH - top) / triggerRange, 0), 1);
+          const nextCount = Math.round(progress * totalWords);
 
-      setLitCount(Math.round(progress * totalWords));
+          setLitCount((prev) => (prev !== nextCount ? nextCount : prev));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -66,11 +57,6 @@ export default function UpscQuoteSection({
       <div
         ref={containerRef}
         className="container upsc-quote-container"
-        style={{
-          opacity: 0,
-          transform: 'translateY(28px)',
-          transition: 'opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1)',
-        }}
       >
         {/* Top Badge */}
         <div className="upsc-quote-badge">

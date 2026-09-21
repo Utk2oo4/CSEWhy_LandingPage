@@ -14,32 +14,8 @@ import Footer from './components/Footer';
 import TestimonialsPageV2 from './components/testimonials/TestimonialsPageV2';
 import AboutPage from './components/about/AboutPage';
 
-function useScrollReveal() {
-  useEffect(() => {
-    const sections = document.querySelectorAll('.reveal-section');
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
-}
-
 /** Home page — all original sections */
 function HomePage() {
-  useScrollReveal();
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {/* 1. Navbar & Hero Section */}
@@ -48,32 +24,29 @@ function HomePage() {
         <HeroSection />
 
         {/* 2. Trust Bar */}
-        <div className="reveal-section"><TrustBar /></div>
+        <TrustBar />
 
         {/* 3. UPSC Quote */}
-        <div className="reveal-section"><UpscQuoteSection /></div>
+        <UpscQuoteSection />
 
         {/* 4. Explore Courses */}
         <CourseDiscovery />
 
-        {/* App Features section kept for future use */}
-        {/* <div className="reveal-section"><AppFeatures /></div> */}
-
         {/* 5. Social Media */}
-        <div className="reveal-section"><SocialCommunity /></div>
+        <SocialCommunity />
 
         {/* 6. India Map */}
-        <div className="reveal-section"><PanIndiaCommunity /></div>
+        <PanIndiaCommunity />
 
         {/* 7. Student Reviews */}
-        <div className="reveal-section"><StudentReviews /></div>
+        <StudentReviews />
 
         {/* 8. News */}
-        <div className="reveal-section"><NewsSection /></div>
+        <NewsSection />
       </main>
 
       {/* 9. Footer */}
-      <div className="reveal-section"><Footer /></div>
+      <Footer />
     </div>
   );
 }

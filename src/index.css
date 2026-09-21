@@ -2737,16 +2737,13 @@ html, body {
    SCROLL REVEAL ANIMATIONS
    ============================================================ */
 .reveal-section {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  opacity: 1;
+  transform: none;
 }
 
 .reveal-section.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 
@@ -3222,18 +3219,11 @@ html, body {
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  /* Entrance animation (initial state) */
-  opacity: 0;
-  transform: translateY(18px);
 }
 
 .course-section-visible .course-card {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms),
-              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms),
-              box-shadow 0.3s ease,
-              border-color 0.3s ease;
+  transform: none;
 }
 
 .course-card:hover {
@@ -3385,16 +3375,11 @@ html, body {
 .course-view-all-wrapper {
   text-align: center;
   margin-top: 44px;
-  /* Entrance animation */
-  opacity: 0;
-  transform: translateY(12px);
 }
 
 .course-section-visible .course-view-all-wrapper {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 500ms,
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 500ms;
+  transform: none;
 }
 
 .course-view-all-btn {
@@ -3419,15 +3404,13 @@ html, body {
 
 /* --- Header Entrance Animation --- */
 .course-header-wrapper {
-  opacity: 0;
-  transform: translateY(15px);
+  opacity: 1;
+  transform: none;
 }
 
 .course-section-visible .course-header-wrapper {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: none;
 }
 
 /* --- Decorative Architecture --- */
