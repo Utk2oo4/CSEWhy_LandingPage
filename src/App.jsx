@@ -11,6 +11,7 @@ import SocialCommunity from './components/home/SocialCommunity';
 import StudentReviews from './components/home/StudentReviews';
 import NewsSection from './components/home/NewsSection';
 import Footer from './components/Footer';
+import AppDownload from './components/home/AppDownload';
 import TestimonialsPageV2 from './components/testimonials/TestimonialsPageV2';
 import AboutPage from './components/about/AboutPage';
 
@@ -43,9 +44,12 @@ function HomePage() {
 
         {/* 8. News */}
         <NewsSection />
+
+        {/* 9. App Download */}
+        <AppDownload />
       </main>
 
-      {/* 9. Footer */}
+      {/* 10. Footer */}
       <Footer />
     </div>
   );

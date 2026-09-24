@@ -2,6 +2,31 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, GraduationCap, Briefcase } from 'lucide-react';
 import { COURSE_GROUPS, COURSE_VIEW_CONFIG } from '../../data/coursesData';
 
+// UPSC course images
+import imgPYQ from '../../assets/course images/PYQ mastery.png';
+import imgCurrentAffairs from '../../assets/course images/current affairs.png';
+import imgMasterAI from '../../assets/course images/master ai.png';
+import imgFoundation from '../../assets/course images/FOUNDATION course.png';
+
+// Upskilling course images
+import imgAIFellowship from '../../assets/plan b course images/ai fellowship.png';
+import imgPublicPolicy from '../../assets/plan b course images/public POLICY.png';
+import imgPersonality from '../../assets/plan b course images/personality development.png';
+import imgCareerMasterclass from '../../assets/plan b course images/career masterclass.png';
+
+const COURSE_IMAGES = {
+  // UPSC
+  'pyq-mastery-2027':        imgPYQ,
+  'current-affairs-mag':     imgCurrentAffairs,
+  'master-ai-for-upsc':      imgMasterAI,
+  'upsc-foundation-package': imgFoundation,
+  // Upskilling
+  'ai-creator-fellowship':   imgAIFellowship,
+  'public-policy-fellowship': imgPublicPolicy,
+  'personality-development': imgPersonality,
+  'ai-masterclass-upskilling': imgCareerMasterclass,
+};
+
 /* ───────────────────────────────────────────────────
    Inline SVG Illustrations (flat vector, consistent)
    ─────────────────────────────────────────────────── */
@@ -181,14 +206,27 @@ function PointIcon({ icon, color, bg }) {
    ─────────────────────────────────────────────────── */
 
 function CourseCard({ course, index }) {
+  const courseImg = COURSE_IMAGES[course.id];
+
   return (
     <div
       className="course-card"
       style={{ '--stagger-delay': `${index * 80 + 100}ms` }}
     >
-      {/* Illustration */}
-      <div className="course-card-illustration" style={{ background: course.accentBg }}>
-        <CourseIllustration type={course.illustration} />
+      {/* Illustration / Image */}
+      <div
+        className={`course-card-illustration${courseImg ? ' course-card-illustration--img' : ''}`}
+        style={{ background: courseImg ? '#FFFFFF' : course.accentBg }}
+      >
+        {courseImg ? (
+          <img
+            src={courseImg}
+            alt={course.title}
+            className="course-card-img"
+          />
+        ) : (
+          <CourseIllustration type={course.illustration} />
+        )}
       </div>
 
       {/* Content */}
